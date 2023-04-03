@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+    bot:
+        container_name: "bot"
+        image: bot-test-docker
+        environment:
+            - BotToken="MTA5MjQzNDkzMjE2MjM3NTcyMA.Gti9gO.GvMFEX0y4qJNlp6qRchaVBBWviHLh1DOs0B4QY"
+            - teaTimeId=1092430366272409630
+            - ServerID=714632472343871558
+            - teaTimeChannel=1092429099298988032
+            - testChannel=1092435443477385356
+            - testServer=987201449358405652
