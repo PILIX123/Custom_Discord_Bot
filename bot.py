@@ -4,6 +4,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 from discord.ext import tasks
 import logging
+import pytz
 
 
 load_dotenv()
@@ -26,6 +27,7 @@ async def on_ready():
 @tasks.loop(minutes=30)
 async def morningTea():
     channel = client.get_channel(int(TeaTimeChannel))
-    if datetime.now().time().hour == 9 and datetime.now().time().minute <= 30:
+    est = pytz.timezone('US/Eastern')
+    if datetime.now(est).time().hour == 9 and datetime.now(est).time().minute <= 30:
         await channel.send(f"<@&{TeaTimeID}> C'est l'heure du thé")
 client.run(Token)
