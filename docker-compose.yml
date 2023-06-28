@@ -5,7 +5,22 @@ services:
         container_name: "bot"
         image: bot-test-docker
         environment:
-            - BotToken="Secret"
-            - teaTimeId="Secret"
-            - ServerID="Secret"
-            - teaTimeChannel="Secret"
+            - BotToken=/run/secrets/BotToken
+            - teaTimeId=/run/secrets/teaTimeId
+            - ServerID=/run/secrets/ServerID
+            - teaTimeChannel=/run/secrets/teaTimeChannel
+        secrets:
+          - BotToken
+          - teaTimeId
+          - ServerID
+          - teaTimeChannel
+
+secrets:
+    BotToken:
+        file: ./secrets/BotToken.txt
+    teaTimeId:
+        file: ./secrets/teaTimeId.txt
+    ServerID:
+        file: ./secrets/ServerID.txt
+    teaTimeChannel:
+        file: ./secrets/teaTimeChannel.txt
